@@ -1,0 +1,27 @@
+language: java
+jdk:
+  - openjdk11  # Versão do JDK 11
+
+os: windows  # Configura o ambiente Windows
+
+before_install:
+  - choco install heroku-cli  # Instala o Heroku CLI via Chocolatey
+  - export PATH="$PATH:/c/Program Files/Heroku/bin"  # Adiciona o Heroku CLI ao PATH
+
+install: true  # Desabilita a etapa de instalação (não é necessário neste caso)
+
+jobs:
+  include:
+    - stage: "Build projects"
+      script:
+        - ./gradlew build 
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_KEY  # Defina sua HEROKU_API_KEY como uma variável de ambiente no Travis CI
+  app: dio-cities-api-2
+  on:
+    branch: master  # Implantar apenas a partir da branch master (ajuste conforme necessário)
+
+
