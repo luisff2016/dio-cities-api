@@ -21,7 +21,6 @@ deploy:
   api_key:
     secure: $HEROKU_KEY  # Defina sua HEROKU_API_KEY como uma variável de ambiente no Travis CI
   app: dio-cities-api
-  on:
-    branch: master  # Implantar apenas a partir da branch master (ajuste conforme necessário)
+  #on:    branch: master  # Implantar apenas a partir da branch master (ajuste conforme necessário)
 
 
